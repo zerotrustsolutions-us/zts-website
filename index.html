@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zero Trust Solutions | Palo Alto Networks delivery</title>
+<meta name="description" content="Zero Trust Solutions designs, deploys and operates Palo Alto Networks security: NGFW, Prisma Access, Prisma SD-WAN, Cortex XDR/XSIAM, cloud and AI security.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--a:#FF7A45;--g:rgba(255,122,69,.38);--gs:rgba(255,122,69,.12);--bg:#070A12;--bg2:#0A0E19;--card:#0C1120;--ln:#1A2033;--bd:#2A3350;--tx:#E8ECF4;--mu:#B3BCCD;--dim:#8C96AD;--sky:#7DD3FC}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:Inter,system-ui,sans-serif}
+a{color:#FF8A5C}a:hover{color:#FFB08F}
+h1,h2,h3{margin:0;font-family:Sora,sans-serif;letter-spacing:-.03em}
+p{margin:0}
+.w{max-width:1240px;margin:0 auto;padding-left:24px;padding-right:24px}
+.mono{font-family:'JetBrains Mono',monospace}
+.ey{font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--a)}
+.ey.sky{color:var(--sky)}
+.h2{font-weight:700;font-size:clamp(32px,3.8vw,50px);line-height:1.04}
+.lead{font-size:17px;line-height:1.65;color:var(--mu)}
+.btn{display:inline-block;color:#0B0F1A;background:var(--a);text-decoration:none;font-weight:600;font-size:16px;padding:16px 26px;border-radius:999px}
+.btn:hover{color:#0B0F1A}
+.btn.ghost{color:var(--tx);background:none;border:1px solid var(--bd);font-weight:500;padding:15px 25px}
+.lnk{font-weight:600;font-size:16px;text-decoration:none;padding:6px 0;display:inline-block}
+.band{border-top:1px solid var(--ln);background:var(--bg2)}
+.card{border:1px solid var(--bd);background:var(--card);border-radius:20px}
+.stack{display:flex;flex-direction:column}
+.row{display:flex;flex-wrap:wrap}
+.grid{display:grid;gap:16px}
+ul,ol{list-style:none;margin:0;padding:0}
+header{border-bottom:1px solid var(--ln);background:rgba(7,10,18,.96)}
+header .w{padding-top:16px;padding-bottom:16px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--tx)}
+.logo b{display:block;font-family:Sora,sans-serif;font-weight:700;font-size:17px;letter-spacing:-.01em}
+.logo small{display:block;font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--dim);letter-spacing:.08em}
+nav.top{display:flex;flex-wrap:wrap;gap:2px;align-items:center;font-size:15px;font-weight:500}
+nav.top a{color:#C5CCDB;text-decoration:none;padding:12px}
+nav.top a.btn{color:#0B0F1A;padding:12px 18px;font-size:15px;margin-left:8px}
+.hero{background-image:radial-gradient(circle at 80% 30%,var(--gs),transparent 45%),radial-gradient(circle at 15% 85%,rgba(125,211,252,.07),transparent 40%);border-bottom:1px solid var(--ln)}
+.hero .w{padding-top:104px;padding-bottom:112px;display:flex;flex-direction:column;gap:28px}
+.hero .tags{display:flex;flex-wrap:wrap;gap:8px 14px;font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.hero h1{font-weight:800;font-size:clamp(44px,6.6vw,92px);line-height:.98;letter-spacing:-.04em;max-width:1060px}
+.hero p{font-size:20px;line-height:1.6;color:var(--mu);max-width:760px}
+.acc{color:var(--a)}
+.orbit-wrap{flex:1 1 480px;min-width:0;display:flex;justify-content:center}
+.orbit{position:relative;width:100%;max-width:540px;aspect-ratio:1/1}
+.ring{position:absolute;border-radius:50%;border:1px solid #1F2740}
+.core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:26%;aspect-ratio:1/1;border-radius:50%;background:var(--a);box-shadow:0 0 60px var(--g);display:flex;align-items:center;justify-content:center;text-align:center;color:#0B0F1A;font-family:Sora,sans-serif;font-weight:800;font-size:15px;line-height:1.1}
+.node{position:absolute;transform:translate(-50%,-50%);min-width:64px;height:64px;padding:0 14px;border-radius:999px;font-family:Sora,sans-serif;font-weight:700;font-size:14px;cursor:pointer;border:1px solid var(--bd);background:var(--card);color:var(--tx)}
+.node[aria-pressed=true]{background:var(--a);border-color:var(--a);color:#0B0F1A;box-shadow:0 0 32px rgba(255,122,69,.5)}
+.detail{border:1px solid var(--bd);background:var(--card);border-radius:16px;padding:26px;gap:10px;min-height:176px;box-sizing:border-box}
+.pill{border:1px solid var(--bd);border-radius:999px;padding:14px 20px;display:flex;gap:10px;align-items:center;font-weight:500;font-size:15.5px;background:var(--card)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--a);flex:0 0 auto}
+.note{flex:1 1 440px;border:1px solid #5A3A22;background:linear-gradient(180deg,rgba(255,138,92,.10),rgba(255,138,92,.03));border-radius:16px;padding:32px;gap:16px}
+.chip{border:1px solid var(--bd);background:var(--card);border-radius:999px;padding:12px 20px;display:flex;flex-direction:column;gap:2px}
+.chip b{font-weight:600;font-size:15.5px}
+.chip span{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--dim)}
+.tag{font-family:'JetBrains Mono',monospace;font-size:13px;border:1px solid var(--bd);border-radius:8px;padding:8px 12px;color:#C5CCDB}
+.port{text-decoration:none;color:var(--tx);padding:30px 28px;gap:14px;min-height:260px;box-sizing:border-box}
+.port:hover{color:var(--tx);border-color:#3A4466}
+.num{font-family:Sora,sans-serif;font-weight:800;font-size:44px;line-height:1;color:var(--bd)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));border-top:1px solid var(--bd)}
+.steps li{padding:24px 18px 8px 0;display:flex;flex-direction:column;gap:10px;position:relative}
+.steps li:before{content:"";position:absolute;top:-5px;left:0;width:9px;height:9px;border-radius:50%;background:var(--a);box-shadow:0 0 14px var(--g)}
+footer{border-top:1px solid var(--ln);background:#05070D;color:var(--dim)}
+footer nav a{color:#C5CCDB;text-decoration:none;padding:10px 0}
+@media (max-width:640px){.fde{padding:36px 22px!important}.cta{padding:40px 24px!important}}
+</style>
+</head>
+<body>
+
+<header>
+<div class="w">
+<a href="#top" class="logo">
+<svg width="38" height="38" viewBox="0 0 38 38" fill="none" aria-hidden="true"><circle cx="19" cy="19" r="17" stroke="#2A3350" stroke-width="1.2"/><ellipse cx="19" cy="19" rx="17" ry="7" stroke="#FF7A45" stroke-width="1.4" transform="rotate(-28 19 19)"/><circle cx="19" cy="19" r="4.5" fill="#FF7A45"/><circle cx="33" cy="12" r="2" fill="#7DD3FC"/></svg>
+<span><b>Zero Trust Solutions</b><small>PALO ALTO NETWORKS DELIVERY</small></span>
+</a>
+<nav class="top" aria-label="Primary">
+<a href="#top">Home</a>
+<a href="#paths">Solutions</a>
+<a href="#lifecycle">Services</a>
+<a href="#coverage">Products</a>
+<a href="#portfolio">Outcomes</a>
+<a href="#contact" class="btn">Talk to an expert</a>
+</nav>
+</div>
+</header>
+
+<section id="top" class="hero">
+<div class="w">
+<div class="tags"><span class="acc">Palo Alto Networks delivery</span><span aria-hidden="true">·</span><span>Operational readiness</span><span aria-hidden="true">·</span><span>Global experience</span></div>
+<h1>Palo Alto Networks, deployed and <span class="acc">ready to operate.</span></h1>
+<p>Zero Trust Solutions turns your security requirements into Palo Alto Networks environments that are deployed, adopted and supportable on day two. We primarily serve U.S. organizations and partners, with architects who have delivered worldwide.</p>
+<div class="row" style="gap:12px;padding-top:4px">
+<a href="#contact" class="btn" style="box-shadow:0 0 40px var(--g)">Talk to a Palo Alto Networks expert</a>
+<a href="#orbit" class="btn ghost">Explore our capabilities</a>
+</div>
+</div>
+</section>
+
+<section id="orbit" class="w" style="padding-top:112px;padding-bottom:112px">
+<div class="row" style="gap:56px;align-items:center">
+<div class="stack" style="flex:1 1 380px;min-width:0;gap:20px">
+<span class="ey">One platform. Every layer.</span>
+<h2 style="font-weight:700;font-size:clamp(34px,4.2vw,56px);line-height:1.02">Your mission at the center. Our expertise around it.</h2>
+<p class="lead">Select any point in the orbit to see how our architects support that part of your Palo Alto Networks environment.</p>
+<div class="detail stack" aria-live="polite">
+<span id="o-code" class="mono" style="font-size:12px;color:var(--a)">01 / NETWORK SECURITY</span>
+<span id="o-label" style="font-family:Sora,sans-serif;font-weight:700;font-size:24px;letter-spacing:-.02em">Strata next-gen firewalls</span>
+<span id="o-detail" style="font-size:16px;line-height:1.6;color:var(--mu)">Hardware, VM-Series and CN-Series designs with App-ID, User-ID and threat prevention turned on from the start.</span>
+</div>
+</div>
+<div class="orbit-wrap">
+<div class="orbit" id="orb">
+<div class="ring" style="inset:0"></div>
+<div class="ring" style="inset:14%;border:1px dashed var(--bd)"></div>
+<div class="ring" style="inset:30%;background:radial-gradient(circle,var(--gs),transparent 70%)"></div>
+<div class="core">Your<br>mission</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="band" style="border-bottom:1px solid var(--ln)">
+<div class="w row" style="padding-top:72px;padding-bottom:72px;gap:32px 56px;align-items:center">
+<div class="stack" style="flex:1 1 360px;gap:12px">
+<span class="ey sky">Value that lasts past go-live</span>
+<h2 style="font-weight:700;font-size:clamp(26px,2.8vw,36px);line-height:1.1;letter-spacing:-.02em">What you keep after launch.</h2>
+</div>
+<ul class="grid" style="flex:2 1 640px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
+<li class="pill"><span class="dot"></span>Faster time to value</li>
+<li class="pill"><span class="dot"></span>Adoption visibility</li>
+<li class="pill"><span class="dot"></span>Health and experience signals</li>
+<li class="pill"><span class="dot"></span>Clear ownership after go-live</li>
+</ul>
+</div>
+</section>
+
+<section class="w row" style="padding-top:112px;padding-bottom:112px;gap:40px 56px">
+<div class="stack" style="flex:1 1 480px;gap:20px">
+<span class="ey">One team, one platform</span>
+<h2 class="h2">Palo Alto Networks is where we go deepest.</h2>
+<p class="lead" style="line-height:1.7">Palo Alto Networks is our lead practice, and our architects carry deep, hands-on experience across its network security, SASE, security operations and cloud platforms. Because we also work alongside Fortinet, Cisco, Zscaler and Splunk, we design for the mixed environments most organizations actually run. The result: faster deployments, cleaner designs and fewer surprises after cutover.</p>
+<a href="#lifecycle" class="lnk">Meet the team behind the delivery →</a>
+</div>
+<aside class="note stack" aria-label="Field note">
+<div class="row" style="align-items:center;gap:10px">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF7A45" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v4M12 17h.01M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+<span class="ey">Field note</span>
+</div>
+<h3 style="font-weight:700;font-size:24px;line-height:1.2;letter-spacing:-.01em">A lift-and-shift rule migration isn't a deployment.</h3>
+<p style="font-size:16px;line-height:1.65;color:#C5CCDB">Copying port-based rules onto a new firewall leaves App-ID, User-ID and threat profiles switched off. Customers end up paying for capability they never use, and renewals get hard. We deploy with the platform's controls turned on and ownership clearly handed over.</p>
+<a href="#lifecycle" class="lnk" style="font-size:15.5px">See our full-adoption delivery model →</a>
+</aside>
+</section>
+
+<section id="coverage" class="band">
+<div class="w stack" style="padding-top:104px;padding-bottom:104px;gap:36px">
+<div class="row" style="gap:20px 56px;align-items:flex-end">
+<div class="stack" style="flex:1 1 480px;gap:16px">
+<span class="ey sky">Product coverage</span>
+<h2 class="h2">Across the Palo Alto Networks portfolio.</h2>
+</div>
+<p class="lead" style="flex:1 1 420px">From the firewall to the SOC, we design and deploy the platforms together so policy, telemetry and response work as one system.</p>
+</div>
+<ul class="row" style="gap:12px">
+<li class="chip"><b>Strata NGFW</b><span>PA-Series · VM-Series · CN-Series</span></li>
+<li class="chip"><b>Panorama / Strata Cloud Manager</b><span>Management</span></li>
+<li class="chip"><b>Prisma Access</b><span>SASE</span></li>
+<li class="chip"><b>Prisma SD-WAN</b><span>Branch</span></li>
+<li class="chip"><b>Cortex XDR</b><span>Detection &amp; response</span></li>
+<li class="chip"><b>Cortex XSIAM</b><span>SOC platform</span></li>
+<li class="chip"><b>Prisma Cloud / Cortex Cloud</b><span>Cloud security</span></li>
+<li class="chip"><b>Prisma AIRS</b><span>AI security</span></li>
+</ul>
+</div>
+</section>
+
+<section class="w" style="padding-top:112px;padding-bottom:112px">
+<div class="card stack fde" style="border-radius:24px;background:radial-gradient(circle at 90% 0%,var(--gs),transparent 50%),var(--card);padding:56px 48px;gap:40px">
+<div class="row" style="gap:32px 56px">
+<div class="stack" style="flex:1 1 520px;gap:18px">
+<span class="ey">Our most advanced capability</span>
+<h2 class="h2">Forward deployed engineering for AI security.</h2>
+<p class="lead">Our engineers embed with your team as you roll out AI agents and copilots. We secure the models, the tools they call and the data they touch, using Prisma AIRS and the rest of the Palo Alto Networks platform.</p>
+<a href="#contact" class="btn" style="align-self:flex-start;font-size:15px;padding:14px 22px">Explore AI and data security</a>
+</div>
+<div class="stack" style="flex:1 1 360px;gap:14px">
+<span class="mono" style="font-size:12px;color:var(--dim)">AGENT FRAMEWORKS WE SECURE</span>
+<ul class="row" style="gap:8px">
+<li class="tag">MCP servers</li><li class="tag">Claude</li><li class="tag">Codex</li><li class="tag">Copilot agents</li><li class="tag">LangChain</li><li class="tag">Custom harnesses</li>
+</ul>
+<p style="margin-top:6px;font-size:15px;line-height:1.6;color:var(--mu)">We cover prompt injection, tool and MCP-server permissions, data leakage and runtime monitoring for agent workloads.</p>
+</div>
+</div>
+<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+<div class="stack" style="border-top:1px solid var(--bd);padding-top:20px;gap:10px"><h3 style="font-size:20px;letter-spacing:-.01em">Embedded execution</h3><p style="font-size:15.5px;line-height:1.6;color:var(--mu)">Engineers work inside your team and sprint cadence, not from a statement of work.</p></div>
+<div class="stack" style="border-top:1px solid var(--bd);padding-top:20px;gap:10px"><h3 style="font-size:20px;letter-spacing:-.01em">Cross-framework security</h3><p style="font-size:15.5px;line-height:1.6;color:var(--mu)">One set of guardrails across every agent framework and model provider you use.</p></div>
+<div class="stack" style="border-top:1px solid var(--bd);padding-top:20px;gap:10px"><h3 style="font-size:20px;letter-spacing:-.01em">Machine-speed defense</h3><p style="font-size:15.5px;line-height:1.6;color:var(--mu)">Runtime detection and automated response wired into Cortex for agent activity.</p></div>
+</div>
+</div>
+</section>
+
+<section id="paths" class="band">
+<div class="w" style="padding-top:104px;padding-bottom:104px">
+<div class="stack" style="gap:16px;margin-bottom:44px">
+<span class="ey sky">Choose your path</span>
+<h2 class="h2">How we work with you.</h2>
+</div>
+<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+<article class="card stack" style="padding:32px 30px;gap:14px"><span class="mono" style="font-size:12px;color:var(--a)">FOR ORGANIZATIONS</span><h3 style="font-size:24px;letter-spacing:-.02em">Buy anywhere, deploy with us</h3><p style="font-size:16px;line-height:1.6;color:var(--mu)">Purchase Palo Alto Networks through any reseller, then request Zero Trust Solutions as your delivery team.</p><a href="#contact" class="lnk" style="margin-top:auto;font-size:15.5px">Request us for your deployment →</a></article>
+<article class="card stack" style="padding:32px 30px;gap:14px"><span class="mono" style="font-size:12px;color:var(--a)">FOR PARTNERS</span><h3 style="font-size:24px;letter-spacing:-.02em">Add specialist capacity</h3><p style="font-size:16px;line-height:1.6;color:var(--mu)">Resellers and MSSPs bring us in to deliver under your brand when projects outgrow your bench.</p><a href="#contact" class="lnk" style="margin-top:auto;font-size:15.5px">Partner with us →</a></article>
+<article class="card stack" style="padding:32px 30px;gap:14px"><span class="mono" style="font-size:12px;color:var(--a)">NOT SURE YET?</span><h3 style="font-size:24px;letter-spacing:-.02em">Start with a conversation</h3><p style="font-size:16px;line-height:1.6;color:var(--mu)">Tell us what you need to secure. We'll point you to the right products and the right next step.</p><a href="#contact" class="lnk" style="margin-top:auto;font-size:15.5px">Talk to an architect →</a></article>
+</div>
+</div>
+</section>
+
+<section id="portfolio" class="w" style="padding-top:112px;padding-bottom:112px">
+<div class="stack" style="gap:16px;margin-bottom:44px">
+<span class="ey">Portfolio coverage</span>
+<h2 class="h2">Four outcomes, one platform.</h2>
+</div>
+<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+<a href="#contact" class="card stack port"><span class="num">01</span><span style="font-family:Sora,sans-serif;font-weight:700;font-size:22px">Secure users</span><span style="font-size:15.5px;line-height:1.6;color:var(--mu)">Protect every user and device, on-site or remote, with consistent Zero Trust access.</span><span class="mono" style="margin-top:auto;font-size:11.5px;color:var(--dim)">Prisma Access · GlobalProtect · NGFW</span><span style="font-weight:600;font-size:15px;color:var(--a)">Explore →</span></a>
+<a href="#contact" class="card stack port"><span class="num">02</span><span style="font-family:Sora,sans-serif;font-weight:700;font-size:22px">Protect data and AI</span><span style="font-size:15.5px;line-height:1.6;color:var(--mu)">Control sensitive data and secure the AI applications and agents that use it.</span><span class="mono" style="margin-top:auto;font-size:11.5px;color:var(--dim)">Enterprise DLP · Prisma AIRS</span><span style="font-weight:600;font-size:15px;color:var(--a)">Explore →</span></a>
+<a href="#contact" class="card stack port"><span class="num">03</span><span style="font-family:Sora,sans-serif;font-weight:700;font-size:22px">Connect branches and clouds</span><span style="font-size:15.5px;line-height:1.6;color:var(--mu)">Link sites and cloud workloads securely without backhauling traffic.</span><span class="mono" style="margin-top:auto;font-size:11.5px;color:var(--dim)">Prisma SD-WAN · VM-Series · Cloud NGFW</span><span style="font-weight:600;font-size:15px;color:var(--a)">Explore →</span></a>
+<a href="#contact" class="card stack port"><span class="num">04</span><span style="font-family:Sora,sans-serif;font-weight:700;font-size:22px">Reduce exposure</span><span style="font-size:15.5px;line-height:1.6;color:var(--mu)">Find and fix risk faster with unified detection, response and attack-surface management.</span><span class="mono" style="margin-top:auto;font-size:11.5px;color:var(--dim)">Cortex XDR · XSIAM · Xpanse</span><span style="font-weight:600;font-size:15px;color:var(--a)">Explore →</span></a>
+</div>
+</section>
+
+<section id="lifecycle" class="band">
+<div class="w" style="padding-top:104px;padding-bottom:104px">
+<div class="stack" style="gap:16px;margin-bottom:48px">
+<span class="ey sky">One lifecycle</span>
+<h2 class="h2">One team from assessment to optimization.</h2>
+</div>
+<ol class="steps">
+<li><span class="mono" style="font-size:12px;color:var(--dim)">01</span><b style="font-family:Sora,sans-serif;font-size:21px">Assess</b><span style="font-size:15px;line-height:1.55;color:var(--mu)">Current state, requirements and risk.</span></li>
+<li><span class="mono" style="font-size:12px;color:var(--dim)">02</span><b style="font-family:Sora,sans-serif;font-size:21px">Procure</b><span style="font-size:15px;line-height:1.55;color:var(--mu)">Right-sized sizing and licensing guidance.</span></li>
+<li><span class="mono" style="font-size:12px;color:var(--dim)">03</span><b style="font-family:Sora,sans-serif;font-size:21px">Design</b><span style="font-size:15px;line-height:1.55;color:var(--mu)">Target architecture and policy model.</span></li>
+<li><span class="mono" style="font-size:12px;color:var(--dim)">04</span><b style="font-family:Sora,sans-serif;font-size:21px">Deploy</b><span style="font-size:15px;line-height:1.55;color:var(--mu)">Staged rollout with features enabled.</span></li>
+<li><span class="mono" style="font-size:12px;color:var(--dim)">05</span><b style="font-family:Sora,sans-serif;font-size:21px">Operate</b><span style="font-size:15px;line-height:1.55;color:var(--mu)">Runbooks, handoff and day-two support.</span></li>
+<li><span class="mono" style="font-size:12px;color:var(--dim)">06</span><b style="font-family:Sora,sans-serif;font-size:21px">Optimize</b><span style="font-size:15px;line-height:1.55;color:var(--mu)">Adoption reviews and continuous tuning.</span></li>
+</ol>
+<a href="#contact" class="lnk" style="margin-top:36px">Explore the services lifecycle →</a>
+</div>
+</section>
+
+<section id="contact" class="w" style="padding-top:112px;padding-bottom:112px">
+<div class="row cta" style="border-radius:28px;background:radial-gradient(circle at 85% 20%,var(--g),transparent 55%),var(--card);border:1px solid var(--bd);padding:64px 48px;gap:32px 56px;align-items:center;justify-content:space-between">
+<div class="stack" style="flex:1 1 560px;gap:16px">
+<h2 style="font-weight:800;font-size:clamp(34px,4.4vw,60px);line-height:1;letter-spacing:-.035em">Ready to put Palo Alto Networks to work?</h2>
+<p style="font-size:18px;line-height:1.6;color:var(--mu)">Talk with a senior architect about your requirements, timeline and team.</p>
+</div>
+<div class="stack" style="gap:10px;align-items:flex-start">
+<a href="mailto:info@zerotrustsolutions.us" class="btn">Talk to a Palo Alto Networks expert</a>
+<a href="mailto:info@zerotrustsolutions.us" class="mono" style="font-size:13px;color:#C5CCDB">info@zerotrustsolutions.us</a>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="w row" style="padding-top:48px;padding-bottom:24px;gap:24px 48px;justify-content:space-between;align-items:center">
+<span style="font-family:Sora,sans-serif;font-weight:700;font-size:17px;color:var(--tx)">Zero Trust Solutions</span>
+<nav class="row" aria-label="Footer" style="gap:4px 22px;font-size:15px">
+<a href="#paths">Solutions</a><a href="#lifecycle">Services</a><a href="#coverage">Products</a><a href="#contact">Contact</a>
+</nav>
+</div>
+<div class="w row" style="padding-top:18px;padding-bottom:32px;border-top:1px solid var(--ln);gap:10px 24px;justify-content:space-between;font-size:12.5px">
+<span>© 2026 Zero Trust Solutions. All rights reserved.</span>
+<span>Palo Alto Networks, Strata, Prisma and Cortex are trademarks of Palo Alto Networks, Inc.</span>
+</div>
+</footer>
+
+<script>
+(function(){
+var N=[
+["NGFW","01 / NETWORK SECURITY","Strata next-gen firewalls","Hardware, VM-Series and CN-Series designs with App-ID, User-ID and threat prevention turned on from the start."],
+["Mgmt","02 / MANAGEMENT","Panorama & Strata Cloud Manager","Device-group and template hierarchies that scale, plus best-practice posture checks that run continuously."],
+["SASE","03 / SASE","Prisma Access","Mobile users, remote networks and ZTNA, with the same policy model as your data center firewalls."],
+["SD-WAN","04 / BRANCH","Prisma SD-WAN","App-defined branch connectivity, integrated with Prisma Access for secure, consistent branch performance."],
+["SOC","05 / SECURITY OPERATIONS","Cortex XDR & XSIAM","Endpoint and network telemetry, detection engineering and automated playbooks your SOC actually uses."],
+["Cloud","06 / CLOUD","Prisma Cloud & Cortex Cloud","Posture, workload and runtime protection across AWS, Azure and GCP, connected to your SOC."],
+["AI","07 / AI SECURITY","Prisma AIRS","Model, agent and data protection for AI applications, from discovery through runtime."],
+["Ops","08 / DAY-TWO OPERATIONS","Run & optimize","Runbooks, health checks and adoption reviews so your team owns the platform after go-live."]
+];
+var orb=document.getElementById('orb'),bs=[];
+N.forEach(function(n,i){
+var a=i/N.length*Math.PI*2-Math.PI/2,b=document.createElement('button');
+b.type='button';b.className='node';b.textContent=n[0];
+b.style.left=(50+43*Math.cos(a))+'%';b.style.top=(50+43*Math.sin(a))+'%';
+b.setAttribute('aria-pressed',i===0);
+b.onclick=function(){bs.forEach(function(x,j){x.setAttribute('aria-pressed',j===i);});
+document.getElementById('o-code').textContent=n[1];document.getElementById('o-label').textContent=n[2];document.getElementById('o-detail').textContent=n[3];};
+orb.appendChild(b);bs.push(b);
+});
+})();
+</script>
+</body>
+</html>
